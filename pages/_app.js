@@ -12,13 +12,17 @@ function MyApp({ Component, pageProps }) {
     window.Moengage = moe({
       app_id: 'ILHCGEFZ04ELWYTI71A01OW2', // Replace with your actual app ID
       debug_logs: 0, // Set to 0 in production
-      swPath: '/serviceworker.js', // Path to your service worker
+      // swPath: '../public/serviceworker.js', // Path to your service worker
       // swScope: '/', // Uncomment if you need custom scope
       enableSameSiteCookieHandling: true,
   cookieDomain: window.location.hostname,
     });
   }
 };
+
+if (window.Moengage && window.Moengage.webPushOptIn) {
+  window.Moengage.webPushOptIn();
+}
 
   useEffect(() => {
     initializeMoEngage();
