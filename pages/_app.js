@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import '../styles/globals.css';
-import moengage from "@moengage/web-sdk";
+import MoEngage from "@moengage/web-sdk";
 
 function MyApp({ Component, pageProps }) {
 
