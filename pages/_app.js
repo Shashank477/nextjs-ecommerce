@@ -24,6 +24,34 @@ useEffect(() => {
   }
 }, []);
 
+const requestPushPermission = async () => {
+  try {
+    // Request notification permission
+    const permission = await Notification.requestPermission();
+    
+    if (permission === 'granted') {
+      console.log('Push permission granted');
+      
+      // Enable push in MoEngage after permission is granted
+      MoEngage.enablePushNotifications();
+      
+      // You can also manually trigger token generation
+      MoEngage.getPushToken().then(token => {
+        console.log('Push token:', token);
+      }).catch(error => {
+        console.log('Error getting push token:', error);
+      });
+    } else {
+      console.log('Push permission denied');
+    }
+  } catch (error) {
+    console.log('Error requesting push permission:', error);
+  }
+};
+
+// Call this function when user interacts (button click, etc.)
+requestPushPermission();
+
 MoEngage.enablePushNotifications({
   applicationServerKey: "BFhQOwzwke26ty_96cMjIBG47lnILnABuzmEmlffnnU2vFdup8QZtnPeCTt72faqylFm3yy31eGruFSYH82yI5Y" // VAPID key from your logs
 });
