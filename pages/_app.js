@@ -24,6 +24,10 @@ useEffect(() => {
   }
 }, []);
 
+MoEngage.enablePushNotifications({
+  applicationServerKey: "BFhQOwzwke26ty_96cMjIBG47lnILnABuzmEmlffnnU2vFdup8QZtnPeCTt72faqylFm3yy31eGruFSYH82yI5Y" // VAPID key from your logs
+});
+
   return (
     <Layout>
       <Component {...pageProps} />
