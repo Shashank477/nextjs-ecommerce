@@ -24,6 +24,10 @@ useEffect(() => {
   }
 }, []);
 
+MoEngage.showNudge({
+  nudge_type: "PUSH_PROMPT"
+});
+
 const requestPushPermission = async () => {
   try {
     // Request notification permission
