@@ -14,9 +14,13 @@ moengage.initialize({
 
 useEffect(() => {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/serviceworker.js')
-      .then(reg => console.log("Service worker registered", reg))
-      .catch(err => console.error("SW registration failed", err));
+    navigator.serviceWorker.register('../public/serviceworker.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ', registrationError);
+      });
   }
 }, []);
 
