@@ -1,35 +1,35 @@
 import Layout from '../components/Layout';
 import '../styles/globals.css';
-import MoEngage from "@moengage/web-sdk";
+import moengage from "@moengage/web-sdk";
+
 
 function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // Initialize MoEngage
-      MoEngage.initialize({
+      moengagengage.initialize({
         app_id: "ILHCGEFZ04ELWYTI71A01OW2",
         debug_logs: 0,
         cluster: "DC_3"
       });
 
       // Make it globally available
-      window.MoEngage = MoEngage;
+      window.moengage = moengage;
       
       // Also make it available without window prefix (optional)
       if (typeof globalThis !== 'undefined') {
-        globalThis.MoEngage = MoEngage;
+        globalThis.moengage = moengage;
       }
 
       console.log('✅ MoEngage is now available globally');
-      console.log('Test access:', window.MoEngage);
-
+      console.log('Test access:', window.moengage);
       Notification.requestPermission().then(permission => {
   console.log('Permission:', permission);
   if (permission === 'granted') {
-    MoEngage.onUserOptedIn();
+    moengage.onUserOptedIn();
     setTimeout(() => {
-      MoEngage.getPushToken().then(token => console.log('TOKEN:', token));
+      moengage.getPushToken().then(token => console.log('TOKEN:', token));
     }, 3000);
   }
 });
