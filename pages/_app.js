@@ -14,6 +14,8 @@ function MyApp({ Component, pageProps }) {
       debug_logs: 0, // Set to 0 in production
       swPath: '/serviceworker.js', // Path to your service worker
       // swScope: '/', // Uncomment if you need custom scope
+      enableSameSiteCookieHandling: true,
+  cookieDomain: window.location.hostname,
     });
   }
 };
