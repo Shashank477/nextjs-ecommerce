@@ -23,6 +23,16 @@ function MyApp({ Component, pageProps }) {
 
       console.log('✅ MoEngage is now available globally');
       console.log('Test access:', window.MoEngage);
+
+      Notification.requestPermission().then(permission => {
+  console.log('Permission:', permission);
+  if (permission === 'granted') {
+    MoEngage.onUserOptedIn();
+    setTimeout(() => {
+      MoEngage.getPushToken().then(token => console.log('TOKEN:', token));
+    }, 3000);
+  }
+});
     }
   }, []);
 
